@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+  }
+  ::selection {
+    @apply bg-gold-light/60;
+  }
+  *:focus-visible {
+    outline: 2px solid #8f6822;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .ledger-bg {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 27px,
+      #e4dfc9 28px
+    );
+    background-position: 0 8px;
+  }
+
+  .stamp {
+    @apply relative inline-flex flex-col items-center justify-center border-[3px] rounded-full font-mono uppercase tracking-widest;
+    transform: rotate(-4deg);
+  }
+  .stamp::before {
+    content: "";
+    @apply absolute inset-[3px] rounded-full border border-dashed;
+    border-color: inherit;
+    opacity: 0.5;
+  }
+  .stamp-low {
+    @apply text-risk-low border-risk-low;
+  }
+  .stamp-medium {
+    @apply text-risk-medium border-risk-medium;
+  }
+  .stamp-high {
+    @apply text-risk-high border-risk-high;
+  }
+
+  .card {
+    @apply bg-paper-card border border-line rounded-lg shadow-[0_1px_2px_rgba(30,36,48,0.06)];
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-ink px-4 py-2.5 text-sm font-medium text-paper-card transition-colors hover:bg-ink-light disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-line bg-paper-card px-4 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-paper disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-gold px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-gold-dark disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .input {
+    @apply w-full rounded-md border border-line bg-paper-card px-3 py-2.5 text-sm text-ink placeholder:text-ink-soft/50 focus:border-gold focus:ring-1 focus:ring-gold;
+  }
+  .label {
+    @apply mb-1.5 block text-xs font-medium uppercase tracking-wide text-ink-soft;
+  }
+}
