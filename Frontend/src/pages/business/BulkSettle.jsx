@@ -100,6 +100,8 @@ export default function BulkSettle() {
           {retailers.map((r) => (
             <option key={r.id} value={r.id}>
               {r.name}
+              {r.owner_name ? ` — Owner: ${r.owner_name}` : ""}
+              {r.gstin ? ` — GSTIN: ${r.gstin}` : ""}
             </option>
           ))}
         </select>
